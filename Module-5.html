@@ -1,0 +1,66 @@
+<h1 id="module-5---random-variables-probability-distributions">Module 5 - Random Variables &amp; Probability Distributions</h1>
+<p>A - &quot;Consider a population consisting of the following values, which represents the number of ice cream purchases during the academic year for each of the five housemates - (8, 14, 16, 10, 11)&quot;</p>
+<p>A. Compute the mean of this population.</p>
+<pre class="sourceCode r"><code class="sourceCode r">icvalues =<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">10</span>,<span class="dv">11</span>)
+icmean =<span class="st"> </span><span class="kw">mean</span>(icvalues)
+
+icsd =<span class="st"> </span><span class="kw">sd</span>(icvalues)
+icsd =<span class="st"> </span><span class="kw">round</span>(icsd,<span class="dv">4</span>)</code></pre>
+<p>The mean of this population is 11.8.</p>
+<p>B. Select a random sample of size 2 out of the five members.</p>
+<p>C. Compute the mean and standard deviation of your sample.</p>
+<pre class="sourceCode r"><code class="sourceCode r">icsample =<span class="st"> </span><span class="kw">sample</span>(icvalues, <span class="dv">2</span>)
+icsample</code></pre>
+<pre><code>## [1] 11 14</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">icsamplemean =<span class="st"> </span><span class="kw">mean</span>(icsample)
+icsamplemean</code></pre>
+<pre><code>## [1] 12.5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">icsamplesd =<span class="st"> </span><span class="kw">sd</span>(icsample)
+icsamplesd =<span class="st"> </span><span class="kw">round</span>(icsamplesd,<span class="dv">4</span>)
+icsamplesd</code></pre>
+<pre><code>## [1] 2.1213</code></pre>
+<p>The mean of this sample is 12.5 and the standard deviation is 2.1213.</p>
+<p>D. Compare the Mean and Standard deviation of your sample to the entire population of this set (8,14, 16, 10, 11).</p>
+<p>The mean and standard deviation of the sample is 12.5 and 2.1213 respectively, while the mean of the original population is 11.8 and the standard deviation is 3.1937.</p>
+<p>B. Suppose that the sample size n = 100 and the population proportion p = 0.95.</p>
+<ol style="list-style-type: decimal">
+<li>Does the sample proportion p have approximately a normal distribution? Explain.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">a =<span class="dv">5</span>
+s =<span class="st"> </span><span class="dv">2</span>
+n =<span class="st"> </span><span class="dv">100</span>
+
+error =<span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.950</span>)*s/<span class="kw">sqrt</span>(n)
+left =<span class="st"> </span>a -<span class="st"> </span>error
+right =<span class="st"> </span>a +<span class="st"> </span>error
+left</code></pre>
+<pre><code>## [1] 4.671029</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">right</code></pre>
+<pre><code>## [1] 5.328971</code></pre>
+<p>Yes, the sample proportion p has an approximate normal distribution because the sample size and sample proportion are large enough in number. If a large enough proportion of the sample size is included, it is more likely the mean and standard deviation will be close to 0 and 1 respectively. If the error falls within a close range of a, then it it considered normal. In this case, error between 4.5 and 5.5 would be sufficiently called normal.</p>
+<ol style="list-style-type: decimal">
+<li>What is the smallest value of n for which the sampling distribution of p is approximately normal?</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">a =<span class="dv">5</span>
+s =<span class="st"> </span><span class="dv">2</span>
+n =<span class="st"> </span><span class="dv">43</span>
+
+error =<span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.950</span>)*s/<span class="kw">sqrt</span>(n)
+left =<span class="st"> </span>a -<span class="st"> </span>error
+right =<span class="st"> </span>a +<span class="st"> </span>error
+left</code></pre>
+<pre><code>## [1] 4.498324</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">right</code></pre>
+<pre><code>## [1] 5.501676</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">a =<span class="dv">5</span>
+s =<span class="st"> </span><span class="dv">2</span>
+n =<span class="st"> </span><span class="dv">44</span>
+
+error =<span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.950</span>)*s/<span class="kw">sqrt</span>(n)
+left =<span class="st"> </span>a -<span class="st"> </span>error
+right =<span class="st"> </span>a +<span class="st"> </span>error
+left</code></pre>
+<pre><code>## [1] 4.504058</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">right</code></pre>
+<pre><code>## [1] 5.495942</code></pre>
+<p>The smallest number that n can be with a population proportion of .95 and be normally distributed is 44.</p>
