@@ -1,55 +1,111 @@
-Advanced Statisics Module 6 - Sampling and Confidence Interval Estimation
+Module 5 - Random Variables & Probability Distributions
 ================
 
-Question \# 1.
-==============
+A - "Consider a population consisting of the following values, which represents the number of ice cream purchases during the academic year for each of the five housemates - (8, 14, 16, 10, 11)"
 
-A publishing company has just published a new textbook. Before the company decides the price at which to sell this textbook, it want to know the average price of all such textbooks in the market. The research department at the company took a sample of 25 comparable textbooks and collected information on their prices. This information produced a mean price of $145 for this sample. It is known that the standard deviation of the prices of all such textbooks is $35 and the population of such prices is normal.
-
-A. What is the point of estimate of the mean price all such textbooks?
-
-The point estimate of the mean (xbar) is $145.
-
-B. Construct a 90% confidence interval for the mean price of all such textbooks
-
-A 90% confidence interval produces an alpha of .10, which means we must find the z-score for .05
+A. Compute the mean of this population.
 
 ``` r
-z = round(qnorm(.95),4)
+icvalues = c(8,14,16,10,11)
+icmean = mean(icvalues)
+icsd = sd(icvalues)
+icsd = round(icsd,4)
 ```
 
-Which comes out to be 1.6449.
+The mean of this population is 11.8.
 
-Since we know the mean is 145 and the standard deviation is 35, we can calculate the margin of error.
+B. Select a random sample of size 2 out of the five members.
+
+C. Compute the mean and standard deviation of your sample.
 
 ``` r
-me = 35/sqrt(25)
-me = round((z*me),4)
-
-cipos = round((145 + me),4)
-cineg = round((145 - me),4)
-cineg
+icsample = sample(icvalues, 2)
+icsample
 ```
 
-    ## [1] 133.4857
-
-We can see that the margin of error is 11.5143, which gives us a 90% confidence interval between (133.4857 and 156.5143).
-
-Question \# 2
-=============
-
-A. According to Mobes Services Inc. an individual checking his/her account at major U.S banks via cellphones cost the banks between $350 and $450. A recent random sample of 600 such checking accounts produced a mean annual cost of $500 to major U.S banks. Assume that the standard deviation of annual costs to major US banks of all such checking account is $40. Make a 99% confidence interval for the current mean annual cost to major banks all such checking account.
-
-The mean (xbar) is 500, the alpha is .005, and the standard deviation is 40.
+    ## [1] 11 14
 
 ``` r
-z = round(qnorm(.99),4)
-
-me = 35/sqrt(25)
-me = round((z*me),4)
-
-cipos = round((500 + me),4)
-cineg = round((500 - me),4)
+icsamplemean = mean(icsample)
+icsamplemean
 ```
 
-The z-score comes out to 2.3263, and we can now find out the margin of error which is 16.2841. Thus, the 99% confidence interval is between (483.7159, 516.2841).
+    ## [1] 12.5
+
+``` r
+icsamplesd = sd(icsample)
+icsamplesd = round(icsamplesd,4)
+icsamplesd
+```
+
+    ## [1] 2.1213
+
+The mean of this sample is 12.5 and the standard deviation is 2.1213.
+
+D. Compare the Mean and Standard deviation of your sample to the entire population of this set (8,14, 16, 10, 11).
+
+The mean and standard deviation of the sample is 12.5 and 2.1213 respectively, while the mean of the original population is 11.8 and the standard deviation is 3.1937.
+
+B. Suppose that the sample size n = 100 and the population proportion p = 0.95.
+
+1.  Does the sample proportion p have approximately a normal distribution? Explain.
+
+``` r
+a =5
+s = 2
+n = 100
+error = qnorm(0.950)*s/sqrt(n)
+left = a - error
+right = a + error
+left
+```
+
+    ## [1] 4.671029
+
+``` r
+right
+```
+
+    ## [1] 5.328971
+
+Yes, the sample proportion p has an approximate normal distribution because the sample size and sample proportion are large enough in number. If a large enough proportion of the sample size is included, it is more likely the mean and standard deviation will be close to 0 and 1 respectively. If the error falls within a close range of a, then it it considered normal. In this case, error between 4.5 and 5.5 would be sufficiently called normal.
+
+1.  What is the smallest value of n for which the sampling distribution of p is approximately normal?
+
+``` r
+a =5
+s = 2
+n = 43
+error = qnorm(0.950)*s/sqrt(n)
+left = a - error
+right = a + error
+left
+```
+
+    ## [1] 4.498324
+
+``` r
+right
+```
+
+    ## [1] 5.501676
+
+``` r
+a =5
+s = 2
+n = 44
+error = qnorm(0.950)*s/sqrt(n)
+left = a - error
+right = a + error
+left
+```
+
+    ## [1] 4.504058
+
+``` r
+right
+```
+
+    ## [1] 5.495942
+
+The smallest number that n can be with a population proportion of .95 and be normally distributed is 44.
